@@ -23,22 +23,12 @@ class PageLoadException(Exception):
     pass
 
 def getImdbData(imdb_username, imdb_password, driver, directory, wait):
-    # Process IMDB Ratings Reviews & Watchlist
+    # Process IMDB Watchlist
     print('Processing IMDB Data')
     
     
     # Generate watchlist export
     success, status_code, url = EH.get_page_with_retries('https://www.imdb.com/list/watchlist', driver, wait)
-    if not success:
-        # Page failed to load, raise an exception
-        raise PageLoadException(f"Failed to load page. Status code: {status_code}. URL: {url}")
-
-    export_button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "div[data-testid*='hero-list-subnav-export-button'] button")))
-    export_button.click()
-    time.sleep(3)
-    
-    # Generate ratings export
-    success, status_code, url = EH.get_page_with_retries('https://www.imdb.com/list/ratings', driver, wait)
     if not success:
         # Page failed to load, raise an exception
         raise PageLoadException(f"Failed to load page. Status code: {status_code}. URL: {url}")

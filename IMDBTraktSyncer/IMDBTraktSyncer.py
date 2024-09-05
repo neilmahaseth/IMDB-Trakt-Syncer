@@ -180,7 +180,7 @@ def main():
         imdb_reviews_to_set = filter_by_comment_length(imdb_reviews_to_set, 600)
         
         # If remove_watched_from_watchlists_value is true
-        if VC.remove_watched_from_watchlists_value:        
+        if 1:        
             # Get the IDs from watched_content
             watched_content_ids = set(item['IMDB_ID'] for item in watched_content if item['IMDB_ID'])
                     
@@ -190,7 +190,7 @@ def main():
             imdb_watchlist_to_set = [item for item in imdb_watchlist_to_set if item['IMDB_ID'] not in watched_content_ids]
             
             # Find items to remove from trakt_watchlist
-            trakt_watchlist_items_to_remove = [item for item in trakt_watchlist if item['IMDB_ID'] in watched_content_ids]
+            trakt_watchlist_items_to_remove = imdb_watchlist_to_set
             # Find items to remove from imdb_watchlist
             imdb_watchlist_items_to_remove = [item for item in imdb_watchlist if item['IMDB_ID'] in watched_content_ids]
         
@@ -252,7 +252,7 @@ def main():
                 print('No Trakt Watchlist Items To Set')
 
             # Set IMDB Watchlist Items
-            if imdb_watchlist_to_set:
+            if 0:
                 print('Setting IMDB Watchlist Items')
                 
                 # Count the total number of items
@@ -568,7 +568,7 @@ def main():
                 print('There was an error getting IMDB reviews. See exception. Skipping reviews submissions.')
 
         # If remove_watched_from_watchlists_value is true
-        if VC.remove_watched_from_watchlists_value:
+        if 1:
             
             # Remove Watched Items Trakt Watchlist
             if trakt_watchlist_items_to_remove:
@@ -631,7 +631,7 @@ def main():
                 print('No Watched Items To Remove From Trakt Watchlist')
 
             # Remove Watched Items IMDB Watchlist
-            if imdb_watchlist_items_to_remove:
+            if 0:
                 print('Removing Watched Items From IMDB Watchlist')
                 
                 # Count the total number of items
